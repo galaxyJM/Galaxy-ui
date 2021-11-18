@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <div class="topBox">
     <Topnav/>
-    <aside v-if="asideVisible">
+    <aside v-if="asideVisible" class="aside">
       <h2>组件列表</h2>
       <ol>
-        <li>Switch</li>
-        <li>Button</li>
-        <li>Dialog</li>
+        <li>Switch组件</li>
+        <li>Button组件</li>
+        <li>Dialog组件</li>
         <li>Tabs组件</li>
       </ol>
     </aside>
@@ -27,6 +27,18 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+.topBox{
+  position: relative;
+  .aside{
+    position: absolute;
+    background: skyblue;
+    min-height: 50vh;
+    ol{
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
 
 </style>

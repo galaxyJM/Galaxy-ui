@@ -1,14 +1,10 @@
 <template>
   <div>
     <nav class="nav">
-      <div class="wrapper">
-
-          <svg class="icon" aria-hidden="true" @click="toggleAside">
-            <use xlink:href="#icon-mulu"></use>
-          </svg>
-
-        <div class="logo">logo</div>
-      </div>
+      <svg class="icon" aria-hidden="true" @click="toggleAside">
+        <use xlink:href="#icon-mulu"></use>
+      </svg>
+      <div class="logo">logo</div>
       <div class="menu">
         <span>主页</span>
         <span>文档</span>
@@ -35,25 +31,15 @@ export default {
 <style lang="scss" scoped>
 .nav {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   height: 40px;
+  align-items: center;
   background: rgb(243, 243, 243);
 
-  .wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    .logo {
-      margin-left: 10px;
-    }
-
-    .icon {
-      display: none;
-    }
+  .logo {
+    margin-right: auto;
+    margin-left: 10px;
   }
-
+  .icon {display: none;}
   .menu {
     display: flex;
     justify-content: space-between;
@@ -68,8 +54,16 @@ export default {
 @media (max-width: 500px) {
   .nav {
     justify-content: center;
-    .menu {display: none;}
-    .icon{display: block!important;}
+
+    .menu {
+      display: none;
+    }
+    .logo{margin: 0 auto;}
+
+    .icon {
+      display: block !important;
+      margin-left: 10px;
+    }
   }
 }
 

@@ -24,22 +24,32 @@ export default {
       asideVisible.value = !asideVisible.value;
     };
     return {toggleAside};
-  }
+  },
+
+
 };
 </script>
 
 <style lang="scss" scoped>
 .nav {
   display: flex;
-  height: 40px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  z-index: 10;
   align-items: center;
   background: rgb(243, 243, 243);
-
   .logo {
     margin-right: auto;
     margin-left: 10px;
   }
-  .icon {display: none;}
+
+  .icon {
+    display: none;
+  }
+
   .menu {
     display: flex;
     justify-content: space-between;
@@ -58,7 +68,10 @@ export default {
     .menu {
       display: none;
     }
-    .logo{margin: 0 auto;}
+
+    .logo {
+      margin: 0 auto;
+    }
 
     .icon {
       display: block !important;

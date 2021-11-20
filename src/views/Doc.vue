@@ -9,7 +9,7 @@
             <router-link to="/doc/switch">Switch组件</router-link>
           </li>
           <li>
-            <router-link to="/doc/switch">Button组件</router-link>
+            <router-link to="/doc/button">Button组件</router-link>
           </li>
           <li>
             <router-link to="/doc/switch">Dialog组件</router-link>
@@ -65,7 +65,7 @@ export default {
   main {
     flex-grow: 1;
     padding: 100px;
-    background: lightgreen;
+    background: rgb(235,236,239);
   }
 }
 

@@ -65,6 +65,9 @@ export default {
   main {
     flex-grow: 1;
     padding: 100px;
+    @media (max-width: 500px) {
+      padding: 50px 0 0 0;
+    }
     background: rgb(235,236,239);
   }
 }

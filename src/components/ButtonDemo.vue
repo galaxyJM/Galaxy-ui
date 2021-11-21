@@ -27,7 +27,6 @@
       <h1>加载中效果</h1>
       <Button loading>加载中</Button>
     </div>
-
   </div>
 </template>
 

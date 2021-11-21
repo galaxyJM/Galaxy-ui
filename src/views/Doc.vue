@@ -12,7 +12,7 @@
             <router-link to="/doc/button">Button组件</router-link>
           </li>
           <li>
-            <router-link to="/doc/switch">Dialog组件</router-link>
+            <router-link to="/doc/dialog">Dialog组件</router-link>
           </li>
           <li>
             <router-link to="/doc/switch">Tabs组件</router-link>

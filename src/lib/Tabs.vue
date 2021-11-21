@@ -8,7 +8,7 @@
       </div>
     </div>
     <div class="hui-Tabs-content">
-      <component v-for="(tab,index) in defaults" :is="tab" :key="index"/>
+      <component :is="currentTab" :key="currentTab.props.title"/>
     </div>
   </div>
 

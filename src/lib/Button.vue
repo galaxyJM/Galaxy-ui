@@ -41,7 +41,6 @@ export default {
   setup(props) {
     const putDown = ref(false);
     const putdown = () => {
-      console.log(1);
       putDown.value = !putDown.value;
     };
     const classes = computed(() => {

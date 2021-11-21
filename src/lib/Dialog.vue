@@ -1,10 +1,10 @@
 <template>
-  <div class="hui-dialog">
+  <div class="hui-dialog" v-if="visible">
     <div class="hui-mask"></div>
-    <div class="hui-wrapper">
+    <div class="hui-wrapper" @click="oncloseClickOverlay">
       <div class="hui-wrapper-dialog">
         <header class="hui-wrapper-header">
-          <button class="hui-wrapper-close">
+          <button class="hui-wrapper-close" @click="close">
             <div class="hui-wrapper-icon">×</div>
           </button>
           <div class="hui-wrapper-title">标题</div>
@@ -31,6 +31,29 @@ import Button from "./Button.vue";
 export default {
   name: "Dialog",
   components: {Button},
+  props: {
+    visible: {
+      type: Boolean,
+      default: false
+    },
+    closeClickOverlay:{
+      type: Boolean,
+      default: true
+    }
+  },
+  setup(props,context){
+    const close = ()=>{
+      context.emit('update:visible',!props.visible)
+    }
+    const oncloseClickOverlay = () =>{
+      if(props.closeClickOverlay){
+        close()
+      }
+    }
+
+    return {close,oncloseClickOverlay}
+  }
+
 };
 </script>
 
@@ -55,6 +78,9 @@ export default {
 
     .hui-wrapper-dialog {
       width: 520px;
+      @media (max-width: 500px) {
+        width: 300px;
+      }
       border-radius: 5px;
       position: relative;
       top: 25vh;
@@ -63,6 +89,7 @@ export default {
 
       .hui-wrapper-header {
         border-bottom: 1px solid #e8e8e8;
+
         .hui-wrapper-close {
           position: absolute;
           top: 0;

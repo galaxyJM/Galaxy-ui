@@ -1,11 +1,14 @@
 <template>
   <div class="hui-Tabs">
-    <div class="hui-Tabs-title">
+    <div class="hui-Tabs-title" ref="container">
       <div class="hui-Tabs-title-item"
            :class="{selected: title === selected}"
            v-for="(title,index) in titles" @click="select(title)"
-           :key="index">{{ title }}
+           :key="index"
+           :ref="el => { if (el) titleItems[index] = el }"
+      >{{ title }}
       </div>
+      <div class="hui-Tabs-title-indicator" ref="indicator"></div>
     </div>
     <div class="hui-Tabs-content">
       <component :is="currentTab" :key="currentTab.props.title"/>
@@ -16,7 +19,7 @@
 
 <script lang="ts">
 import Tab from "./Tab.vue";
-import {computed} from "vue";
+import {computed, onMounted, onUpdated, ref} from "vue";
 
 export default {
   name: "Tabs",
@@ -26,6 +29,19 @@ export default {
     }
   },
   setup(props, context) {
+    const titleItems = ref<HTMLDivElement[]>([]);  //用一个ref去关联模板里的元素
+    const indicator = ref<HTMLDivElement>(null);
+    const container = ref<HTMLDivElement>(null);
+    const x = () => {
+      const titleItem = titleItems.value.find(item => item.classList.contains('selected'));
+      const {width, left: left1} = titleItem.getBoundingClientRect(); //返回元素的大小及其相对于视口的位置
+      const {left: left2} = container.value.getBoundingClientRect();
+      const left = left1 - left2;
+      indicator.value.style.width = width + 'px';
+      indicator.value.style.left = left + 'px';
+    };
+    onMounted(x);
+    onUpdated(x);
     const defaults = context.slots.default();
     const select = (title) => {
       context.emit('update:selected', title);
@@ -42,7 +58,7 @@ export default {
       return defaults.find(tab => tab.props.title === props.selected);
     });
 
-    return {defaults, titles, select, currentTab};
+    return {defaults, titles, select, currentTab, titleItems, indicator, container};
   }
 };
 </script>
@@ -56,6 +72,7 @@ $border-color: #d9d9d9;
     display: flex;
     color: $color;
     border-bottom: 1px solid $border-color;
+    position: relative;
 
     &-item {
       padding: 8px 0;
@@ -69,6 +86,16 @@ $border-color: #d9d9d9;
       &.selected {
         color: $blue;
       }
+    }
+
+    &-indicator {
+      position: absolute;
+      height: 3px;
+      background: $blue;
+      left: 0;
+      bottom: -1px;
+      width: 100px;
+      transition: all 250ms;
     }
   }
 

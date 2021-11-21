@@ -7,11 +7,13 @@
           <button class="hui-wrapper-close" @click="close">
             <div class="hui-wrapper-icon">×</div>
           </button>
-          <div class="hui-wrapper-title">标题</div>
+          <div class="hui-wrapper-title">
+            <slot name="title"></slot>
+          </div>
         </header>
         <main class="hui-wrapper-main">
           <div class="hui-wrapper-content">
-            <p>这是一个提示框</p>
+            <slot name="content"></slot>
           </div>
         </main>
         <footer class="hui-wrapper-footer">

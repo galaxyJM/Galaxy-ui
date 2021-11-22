@@ -1,12 +1,13 @@
 <template>
   <div>
     <nav class="nav">
-      <svg class="icon" aria-hidden="true" @click="toggleAside">
+      <svg class="icon" @click="toggleAside">
         <use xlink:href="#icon-mulu"></use>
       </svg>
-      <div class="logo">logo</div>
+      <div class="logo">
+        <Icon class="icon-galaxy" id="galaxy"/>
+      </div>
       <div class="menu">
-        <span>主页</span>
         <span>文档</span>
       </div>
     </nav>
@@ -15,9 +16,11 @@
 
 <script lang="ts">
 import {inject, Ref} from "vue";
+import Icon from "./Icon.vue";
 
 export default {
   name: "Topnav",
+  components: {Icon},
   setup() {
     const asideVisible = inject<Ref<boolean>>('asideVisible');
     const toggleAside = () => {
@@ -34,13 +37,15 @@ export default {
 .nav {
   display: flex;
   position: fixed;
+  font-size: 20px;
+  color: #102664;
   top: 0;
   left: 0;
   width: 100%;
   padding: 10px;
   z-index: 10;
   align-items: center;
-  background: rgb(243, 243, 243);
+  background: #F7F9FE;
   .logo {
     margin-right: auto;
     margin-left: 10px;
@@ -48,6 +53,10 @@ export default {
 
   .icon {
     display: none;
+    font-size: 30px;
+  }
+  .icon-galaxy{
+    display: block;
   }
 
   .menu {

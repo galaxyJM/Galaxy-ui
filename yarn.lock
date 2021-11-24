@@ -827,6 +827,11 @@ get-stream@^5.0.0:
   dependencies:
     pump "^3.0.0"
 
+github-markdown-css@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.npmmirror.com/github-markdown-css/download/github-markdown-css-5.0.0.tgz?cache=0&sync_timestamp=1634473559070&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fgithub-markdown-css%2Fdownload%2Fgithub-markdown-css-5.0.0.tgz#829966927643426f0a43aabee9991a3ed532280d"
+  integrity sha1-gplmknZDQm8KQ6q+6ZkaPtUyKA0=
+
 glob-parent@^5.1.2, glob-parent@~5.1.2:
   version "5.1.2"
   resolved "https://registry.npmmirror.com/glob-parent/download/glob-parent-5.1.2.tgz?cache=0&sync_timestamp=1632953697891&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fglob-parent%2Fdownload%2Fglob-parent-5.1.2.tgz#869832c58034fe68a4093c17dc15e8340d8401c4"
@@ -1229,6 +1234,11 @@ magic-string@^0.25.7:
   integrity sha1-P0l9b9NMZpxnmNy4IfLvMfVEUFE=
   dependencies:
     sourcemap-codec "^1.4.4"
+
+marked@^4.0.4:
+  version "4.0.4"
+  resolved "https://registry.npmmirror.com/marked/download/marked-4.0.4.tgz#d7cb16adaa474291307c521824c5716d32b95c36"
+  integrity sha512-d8v7SensuOj+gxi0TGbqb2WtS60ycZfZuqtmAB9yz0JLotKerTob/47Qk9oLCDmn5G1dcdn3d5ydR+ih9dvS0A==
 
 media-typer@0.3.0:
   version "0.3.0"

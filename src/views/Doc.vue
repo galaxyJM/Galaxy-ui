@@ -1,8 +1,20 @@
 <template>
   <div class="topBox">
-    <Topnav class="Top-nav"/>
+    <Topnav menuVisible class="Top-nav"/>
     <div class="content">
       <aside v-if="asideVisible" class="aside">
+        <h2>文档</h2>
+        <ol>
+          <li>
+            <router-link to="/doc/description">介绍</router-link>
+          </li>
+          <li>
+            <router-link to="/doc/install">安装</router-link>
+          </li>
+          <li>
+            <router-link to="/doc/use">使用</router-link>
+          </li>
+        </ol>
         <h2>组件列表</h2>
         <ol>
           <li>
@@ -20,7 +32,7 @@
         </ol>
       </aside>
       <main>
-        <router-view />
+        <router-view/>
       </main>
     </div>
   </div>
@@ -41,14 +53,25 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.topBox{
+.topBox {
   display: flex;
   flex-direction: column;
   height: 100vh;
+
+  .router-link-active {
+    color: #42b983;
+  }
+
+  a:hover {
+    border-bottom: 3px solid #42b983;
+
+  }
+
   .Top-nav {
     flex-shrink: 0;
     z-index: 10;
   }
+
   .content {
     flex-grow: 1;
     padding-left: 150px;
@@ -57,38 +80,45 @@ export default {
     }
   }
 }
+
 .content {
   display: flex;
+
   aside {
     flex-shrink: 0;
   }
+
   main {
     flex-grow: 1;
-    padding: 100px;
+    padding-top: 100px;
+    padding-left: 20px;
     @media (max-width: 500px) {
       padding: 50px 0 0 0;
     }
-    background: rgb(235,236,239);
+    background: rgb(235, 236, 239);
   }
 }
 
 aside {
-  background: lightblue;
+  background: #ffffff;
   width: 150px;
   position: fixed;
   top: 0;
   left: 0;
-  padding: 50px 16px 16px;
+  padding: 70px 16px 16px;
   height: 100%;
   z-index: 9;
+
   h2 {
     margin-bottom: 4px;
   }
+
   ol {
     li {
       padding: 4px 0;
     }
   }
+
   @media (max-width: 500px) {
     position: fixed;
     top: 0;
@@ -96,6 +126,7 @@ aside {
     padding-top: 70px;
   }
 }
+
 main {
   overflow: auto;
 }

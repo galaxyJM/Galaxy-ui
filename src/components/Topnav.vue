@@ -1,14 +1,14 @@
 <template>
   <div>
-    <nav class="nav">
-      <svg class="icon" @click="toggleAside">
+    <nav class="nav" >
+      <svg class="icon" v-if="menuVisible" @click="toggleAside">
         <use xlink:href="#icon-mulu"></use>
       </svg>
-      <div class="logo">
+      <router-link to="/" class="logo">
         <Icon class="icon-galaxy" id="galaxy"/>
-      </div>
+      </router-link>
       <div class="menu">
-        <span>文档</span>
+        <router-link to="/doc">文档</router-link>
       </div>
     </nav>
   </div>
@@ -21,6 +21,12 @@ import Icon from "./Icon.vue";
 export default {
   name: "Topnav",
   components: {Icon},
+  props:{
+    menuVisible:{
+      type: Boolean,
+      default: false
+    }
+  },
   setup() {
     const asideVisible = inject<Ref<boolean>>('asideVisible');
     const toggleAside = () => {

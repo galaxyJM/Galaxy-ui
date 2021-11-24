@@ -1,33 +1,35 @@
 <template>
-  <div class="home">
-    <Topnav/>
-    <div class="actions">
-      <h1>银河UI</h1>
-      <h2>一个小而美的UI框架</h2>
-      <div class="links">
-        <a class="a">Github</a>
-        <router-link class="b" to="/doc">开始</router-link>
+  <div class="outside">
+    <div class="home">
+      <Topnav/>
+      <div class="actions">
+        <h1>银河UI</h1>
+        <h2>一个小而美的UI框架</h2>
+        <div class="links">
+          <a class="a">Github</a>
+          <router-link class="b" to="/doc">开始</router-link>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="description">
-    <ul>
-      <li>
-        <Icon id="vue"/>
-        <h3>基于Vue 3.0</h3>
-        <p>全新又快速</p>
-      </li>
-      <li>
-        <Icon id="ts"/>
-        <h3>基于TypeScript</h3>
-        <p>稳定又安全</p>
-      </li>
-      <li>
-        <Icon id="light"/>
-        <h3>代码简洁</h3>
-        <p>好看又好用</p>
-      </li>
-    </ul>
+    <div class="description">
+      <ul>
+        <li>
+          <Icon id="vue"/>
+          <h3>基于Vue 3.0</h3>
+          <p>全新又快速</p>
+        </li>
+        <li>
+          <Icon id="ts"/>
+          <h3>基于TypeScript</h3>
+          <p>稳定又安全</p>
+        </li>
+        <li>
+          <Icon id="light"/>
+          <h3>代码简洁</h3>
+          <p>好看又好用</p>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -43,7 +45,9 @@ export default {
 
 <style lang="scss" scoped>
 $all-color: #102664;
-
+.outside{
+  overflow: hidden;
+}
 .home {
   background: #F7F9FE;
 
@@ -85,10 +89,10 @@ $all-color: #102664;
 }
 
 .description {
-  width: 400px;
-  position: fixed;
-  top: 450px;
-  left: calc(50vw - 200px);
+  width: 300px;
+  position: absolute;
+  top: 400px;
+  left: calc(50vw - 150px);
   margin: 0 auto;
   background: white;
   box-shadow: 5px 5px 10px #F5F8FE,

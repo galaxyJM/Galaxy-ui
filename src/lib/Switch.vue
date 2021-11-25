@@ -26,6 +26,7 @@ export default {
   border-radius: 50px;
   border: 0;
   background: rgb(191,191,191);
+  margin-left: 10px;
   &.selected{
     background: rgb(57,143,253);
   }

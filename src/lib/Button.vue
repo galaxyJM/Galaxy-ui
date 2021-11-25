@@ -1,5 +1,5 @@
 <template>
-  <button class="galaxy-button"
+  <button class="galaxy-theme"
           :class="classes"
           :disabled="disabled"
           @mousedown="putdown"
@@ -59,7 +59,7 @@ export default {
 
 <style lang="scss">
 $radius: 12px;
-.galaxy-theme-button {
+.galaxy-theme {
   font-size: 24px;
   height: 50px;
   width: 130px;

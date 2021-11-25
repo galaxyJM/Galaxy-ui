@@ -1,4 +1,3 @@
-
 import esbuild from 'rollup-plugin-esbuild'
 import vue from 'rollup-plugin-vue'
 import scss from 'rollup-plugin-scss'
@@ -11,8 +10,8 @@ export default {
         globals: {
             vue: 'Vue'
         },
-        name: 'Gulu',
-        file: 'dist/lib/gulu.js',
+        name: 'Galaxy',
+        file: 'dist/lib/galaxy.js',
         format: 'umd',
         plugins: [terser()]
     },

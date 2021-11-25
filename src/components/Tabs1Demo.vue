@@ -10,7 +10,9 @@
 </template>
 <script lang="ts">
 import Tabs from "../lib/Tabs.vue";
+//请更换为 import {Tabs} from 'galaxy-ui-j'
 import Tab from "../lib/Tab.vue";
+//请更换为 import {Tab} from 'galaxy-ui-j'
 import {ref} from "vue";
 
 export default {

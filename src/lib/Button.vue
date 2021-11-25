@@ -59,7 +59,7 @@ export default {
 
 <style lang="scss">
 $radius: 12px;
-.galaxy-button {
+.galaxy-theme-button {
   font-size: 24px;
   height: 50px;
   width: 130px;

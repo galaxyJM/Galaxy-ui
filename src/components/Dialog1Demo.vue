@@ -10,6 +10,7 @@
 import Dialog from "../lib/Dialog.vue";
 import Button from "../lib/Button.vue";
 import {openDialog} from "../lib/openDialog";
+//请更换为 import {Dialog} from 'galaxy-ui-j' 其余同理
 
 export default {
   components: {Button, Dialog},

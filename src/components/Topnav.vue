@@ -8,7 +8,7 @@
         <Icon class="icon-galaxy" id="galaxy"/>
       </router-link>
       <div class="menu">
-        <router-link to="/doc">文档</router-link>
+        <router-link to="/doc/description">文档</router-link>
       </div>
     </nav>
   </div>

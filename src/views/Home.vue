@@ -7,7 +7,7 @@
         <h2>一个小而美的UI框架</h2>
         <div class="links">
           <a class="a">Github</a>
-          <router-link class="b" to="/doc">开始</router-link>
+          <router-link class="b" to="/doc/description">开始</router-link>
         </div>
       </div>
     </div>
@@ -82,7 +82,7 @@ $all-color: #102664;
       }
 
       .b {
-        padding: 10px 29px;
+        padding: 10px 28px;
       }
     }
   }

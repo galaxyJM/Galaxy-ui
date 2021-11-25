@@ -95,7 +95,7 @@ export default {
     @media (max-width: 500px) {
       padding: 50px 0 0 0;
     }
-    background: rgb(235, 236, 239);
+    background: white;
   }
 }
 
@@ -124,6 +124,7 @@ aside {
     top: 0;
     left: 0;
     padding-top: 70px;
+    background: rgb(247, 249, 254);
   }
 }
 

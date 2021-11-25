@@ -1,59 +1,36 @@
 <template>
-  <div class="layout">
-    <h1>拟物风格按钮</h1>
-    <Button theme="likeObject">开始</Button>
-    <h1>普通按钮</h1>
-    <Button theme="button">开始</Button>
-    <div class="color">
-      <h1>不同颜色</h1>
-      <div class="content">
-        <Button color="red">开始</Button>
-        <Button color="yellow">开始</Button>
-        <Button color="green">开始</Button>
-      </div>
-      <div class="size">
-        <h1>不同大小</h1>
-        <div class="content">
-          <Button size="big">开始</Button>
-          <Button size="small">开始</Button>
-        </div>
-      </div>
-    </div>
-    <div>
-      <h1>按钮禁用效果</h1>
-      <Button disabled>禁止</Button>
-    </div>
-    <div>
-      <h1>加载中效果</h1>
-      <Button loading>加载中</Button>
-    </div>
+  <div>
+    <h1>一大堆Button组件正在来袭</h1>
+    <Demo :component="Button1Demo"/>
+    <Demo :component="Button2Demo"/>
+    <Demo :component="Button3Demo"/>
+    <Demo :component="Button4Demo"/>
+    <Demo :component="Button5Demo"/>
+    <Demo :component="Button6Demo"/>
   </div>
 </template>
 
-<script>
-import Button from "../lib/Button.vue";
+<script lang="ts">
+import Button1Demo from "../components/Button1Demo.vue";
+import Button2Demo from "../components/Button2Demo.vue";
+import Button3Demo from "../components/Button3Demo.vue";
+import Button4Demo from "../components/Button4Demo.vue";
+import Button5Demo from "../components/Button5Demo.vue";
+import Button6Demo from "../components/Button6Demo.vue";
+import Demo from "../components/Demo.vue";
+
 export default {
   name: "ButtonDemo",
-  components: {Button}
-}
+  components: {Button1Demo, Button2Demo, Button3Demo, Button4Demo, Button5Demo, Button6Demo,Demo},
+  setup() {
+    return {Button1Demo, Button2Demo, Button3Demo, Button4Demo, Button5Demo, Button6Demo};
+  }
+
+};
 </script>
 
 <style lang="scss" scoped>
-h1{
+h1 {
   font-size: 20px;
-}
-.layout{
-  display: flex;
-  flex-direction: column;
-  .color{
-    display: flex;
-    flex-direction: column;
-  }
-  .size{
-    .content{
-      display: flex;
-      flex-direction: column;
-    }
-  }
 }
 </style>

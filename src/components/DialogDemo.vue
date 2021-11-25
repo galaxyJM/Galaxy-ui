@@ -1,19 +1,6 @@
 <template>
-  <div class="layout">
-    <h1>用visible属性打开</h1>
-    <Button @click="toggle" size="small">点击打开提示框</Button>
-    <Dialog v-model:visible="visible" :closeClickOverlay="true"
-            :ok="ok"
-            :cancel="cancel">
-      <template v-slot:title>
-        标题
-      </template>
-      <template v-slot:content>
-        <p>qqqqqq</p>
-        <p>wwwwww</p>
-      </template>
-    </Dialog>
-    <h1>用一个函数打开</h1>
+  <div>
+    <h1>Dialog组件示例</h1>
     <Button @click="openD" size="small">点击打开提示框</Button>
   </div>
 </template>

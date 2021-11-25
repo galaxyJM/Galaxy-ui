@@ -6,7 +6,7 @@
         <h1>银河UI</h1>
         <h2>一个小而美的UI框架</h2>
         <div class="links">
-          <a class="a">Github</a>
+          <a class="a" href="https://github.com/galaxyJM/Galaxy-ui">Github</a>
           <router-link class="b" to="/doc/description">开始</router-link>
         </div>
       </div>

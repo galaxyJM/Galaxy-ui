@@ -1,20 +1,24 @@
 <template>
   <div>
-    <Switch :value="selected" @update:value="selected = $event"/>
+    <h1>Switch 组件示例 </h1>
+    <Demo :component="Switch1Demo" />
   </div>
 </template>
 
 <script lang="ts">
-import Switch from "../lib/Switch.vue";
-import {ref} from "vue";
+import Switch1Demo from './Switch1Demo.vue';
+import Demo from './Demo.vue';
+
 export default {
-  name: "SwitchDemo",
-  components: {Switch},
-  setup(){
-    const selected = ref(false);
-    return {selected}
+  components: {
+    Demo
+  },
+  setup() {
+    return {
+      Switch1Demo
+    };
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

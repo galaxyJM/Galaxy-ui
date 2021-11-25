@@ -1,3 +1,5 @@
+<demo>fffff</demo>
+
 <template>
   <button :class="{selected:value}">
     <span :class="{selected:value}" @click="toggle"></span>

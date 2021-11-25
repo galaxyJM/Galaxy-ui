@@ -1,5 +1,5 @@
 <template>
-  <button class="hui-button"
+  <button class="galaxy-button"
           :class="classes"
           :disabled="disabled"
           @mousedown="putdown"
@@ -45,9 +45,9 @@ export default {
     };
     const classes = computed(() => {
       return {
-        [`hui-theme-${props.theme}`]: props.theme,
-        [`hui-color-${props.color}`]: props.color,
-        [`hui-size-${props.size}`]: props.size,
+        [`galaxy-theme-${props.theme}`]: props.theme,
+        [`galaxy-color-${props.color}`]: props.color,
+        [`galaxy-size-${props.size}`]: props.size,
         'putdown': putDown.value
       };
     });
@@ -59,7 +59,7 @@ export default {
 
 <style lang="scss">
 $radius: 12px;
-.hui-button {
+.galaxy-button {
   font-size: 24px;
   height: 50px;
   width: 130px;
@@ -67,7 +67,7 @@ $radius: 12px;
   border-radius: 1em;
   margin: 10px;
 
-  &.hui-theme-likeObject {
+  &.galaxy-theme-likeObject {
     background: rgb(235, 236, 239);
     box-shadow: 5px 5px 10px #bbbbbb, -3px -3px 10px #fff;
 
@@ -76,40 +76,40 @@ $radius: 12px;
     }
   }
 
-  &.hui-theme-button {
+  &.galaxy-theme-button {
     color: white;
 
-    &.hui-color-blue {
+    &.galaxy-color-blue {
       background: rgb(55, 119, 253);
     }
 
-    &.hui-color-red {
+    &.galaxy-color-red {
       background: rgb(247, 95, 51);
     }
 
-    &.hui-color-yellow {
+    &.galaxy-color-yellow {
       background: rgb(251, 209, 44);
     }
 
-    &.hui-color-green {
+    &.galaxy-color-green {
       background: rgb(45, 210, 104);
     }
   }
 
-  &.hui-size-big {
+  &.galaxy-size-big {
     font-size: 36px;
     height: 80px;
     width: 200px;
     border-radius: 2em;
   }
-  &.hui-size-small {
+  &.galaxy-size-small {
     font-size: 12px;
     height: 40px;
     width: 100px;
     border-radius: 3em;
   }
 
-  &.hui-theme-button{
+  &.galaxy-theme-button{
     &[disabled]{
       color:grey;
       background: #c8c9cc;
@@ -125,10 +125,10 @@ $radius: 12px;
     border-color: #40a9ff #40a9ff #40a9ff transparent;
     border-style: solid;
     border-width: 2px;
-    animation: hui-spin 1s infinite linear;
+    animation: galaxy-spin 1s infinite linear;
 
 
-    @keyframes hui-spin {
+    @keyframes galaxy-spin {
       0% {
         transform: rotate(0deg)
       }

@@ -1,5 +1,5 @@
 <template>
-  <button :class="{selected:value}">
+  <button class="galaxy-button" :class="{selected:value}">
     <span :class="{selected:value}" @click="toggle"></span>
   </button>
 </template>
@@ -20,7 +20,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-button {
+.galaxy-button {
   width: 100px;
   height: 50px;
   border-radius: 50px;

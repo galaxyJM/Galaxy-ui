@@ -1,23 +1,23 @@
 <template>
-  <div class="hui-dialog" v-if="visible">
-    <div class="hui-mask" @click="oncloseClickOverlay"></div>
-    <div class="hui-wrapper">
-      <div class="hui-wrapper-dialog">
-        <header class="hui-wrapper-header">
-          <button class="hui-wrapper-close" @click="close">
-            <div class="hui-wrapper-icon">×</div>
+  <div class="galaxy-dialog" v-if="visible">
+    <div class="galaxy-mask" @click="oncloseClickOverlay"></div>
+    <div class="galaxy-wrapper">
+      <div class="galaxy-wrapper-dialog">
+        <header class="galaxy-wrapper-header">
+          <button class="galaxy-wrapper-close" @click="close">
+            <div class="galaxy-wrapper-icon">×</div>
           </button>
-          <div class="hui-wrapper-title">
+          <div class="galaxy-wrapper-title">
             <slot name="title"></slot>
           </div>
         </header>
-        <main class="hui-wrapper-main">
-          <div class="hui-wrapper-content">
+        <main class="galaxy-wrapper-main">
+          <div class="galaxy-wrapper-content">
             <slot name="content"></slot>
           </div>
         </main>
-        <footer class="hui-wrapper-footer">
-          <div class="hui-wrapper-footer-button">
+        <footer class="galaxy-wrapper-footer">
+          <div class="galaxy-wrapper-footer-button">
             <Button size="small" @click="cancel">取消</Button>
             <Button size="small" @click="ok">确定</Button>
           </div>
@@ -75,8 +75,8 @@ export default {
 </script>
 
 <style lang="scss">
-.hui-dialog {
-  .hui-mask {
+.galaxy-dialog {
+  .galaxy-mask {
     position: fixed;
     left: 0;
     right: 0;
@@ -86,13 +86,13 @@ export default {
     z-index: 10;
   }
 
-  .hui-wrapper {
+  .galaxy-wrapper {
     position: fixed;
     left: 35%;
     top: 25%;
     z-index: 11;
 
-    .hui-wrapper-dialog {
+    .galaxy-wrapper-dialog {
       width: 520px;
       @media (max-width: 500px) {
         width: 300px;
@@ -102,17 +102,17 @@ export default {
       margin: 0 auto;
       background: white;
 
-      .hui-wrapper-header {
+      .galaxy-wrapper-header {
         border-bottom: 1px solid #e8e8e8;
 
-        .hui-wrapper-close {
+        .galaxy-wrapper-close {
           position: absolute;
           top: 0;
           right: 0;
           border: 0;
           background: #fff;
 
-          .hui-wrapper-icon {
+          .galaxy-wrapper-icon {
             width: 70px;
             height: 70px;
             font-size: 30px;
@@ -123,27 +123,27 @@ export default {
 
         }
 
-        .hui-wrapper-title {
+        .galaxy-wrapper-title {
           padding: 25px 30px;
         }
 
       }
 
-      .hui-wrapper-main {
+      .galaxy-wrapper-main {
         min-height: 10vh;
         border-bottom: 1px solid #e8e8e8;
 
-        .hui-wrapper-content {
+        .galaxy-wrapper-content {
           line-height: 1.5;
           font-size: 14px;
           padding: 25px 30px;
         }
       }
 
-      .hui-wrapper-footer {
+      .galaxy-wrapper-footer {
         padding: 10px 15px;
 
-        .hui-wrapper-footer-button {
+        .galaxy-wrapper-footer-button {
           display: flex;
           justify-content: flex-end;
         }

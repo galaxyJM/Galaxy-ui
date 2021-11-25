@@ -5,7 +5,8 @@
       <component :is="component"/>
     </div>
     <div class="demo-actions">
-      <Button @click="toggleCode" size="small" color="green">查看代码</Button>
+      <Button v-if="codeVisible" @click="hideCode" size="small" color="green">隐藏代码</Button>
+      <Button v-else @click="showCode" size="small" color="green">查看代码</Button>
     </div>
     <div class="demo-code" v-if="codeVisible">
       <pre class="language-html" v-html="html"/>
@@ -33,12 +34,14 @@ export default {
     const html = computed(() => {
       return Prism.highlight(props.component.__sourceCode, Prism.languages.html, 'html');
     });
-    const toggleCode = () => codeVisible.value = !codeVisible.value;
+    const showCode = () => codeVisible.value = true;
+    const hideCode = () => codeVisible.value = false;
     const codeVisible = ref(false);
     return {
       html,
       codeVisible,
-      toggleCode
+      showCode,
+      hideCode
     };
   }
 };
@@ -67,9 +70,11 @@ $border-color: #d9d9d9;
   &-code {
     padding: 8px 16px;
     border-top: 1px dashed $border-color;
+
     :not(pre) > code[class*="language-"], pre[class*="language-"] {
       background: white;
     }
+
     > pre {
       line-height: 1.1;
       font-family: Consolas, 'Courier New', Courier, monospace;

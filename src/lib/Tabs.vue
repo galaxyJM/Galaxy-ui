@@ -1,16 +1,16 @@
 <template>
-  <div class="hui-Tabs">
-    <div class="hui-Tabs-title" ref="container">
-      <div class="hui-Tabs-title-item"
+  <div class="galaxy-Tabs">
+    <div class="galaxy-Tabs-title" ref="container">
+      <div class="galaxy-Tabs-title-item"
            :class="{selected: title === selected}"
            v-for="(title,index) in titles" @click="select(title)"
            :key="index"
            :ref="el => { if (title === selected) {this.selectedItem = el }}"
       >{{ title }}
       </div>
-      <div class="hui-Tabs-title-indicator" ref="indicator"></div>
+      <div class="galaxy-Tabs-title-indicator" ref="indicator"></div>
     </div>
-    <div class="hui-Tabs-content">
+    <div class="galaxy-Tabs-content">
       <component :is="currentTab" :key="currentTab.props.title"/>
     </div>
   </div>
@@ -69,7 +69,7 @@ export default {
 $blue: #40a9ff;
 $color: #333;
 $border-color: #d9d9d9;
-.hui-Tabs {
+.galaxy-Tabs {
   &-title {
     display: flex;
     color: $color;

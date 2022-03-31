@@ -7,7 +7,7 @@ import fs from 'fs'
 import marked from "marked"
 
 const mdToJs = str => {
-    const content = JSON.stringify(marked.parse(str))
+    const content = JSON.stringify(marked.parse(str))  //marked.parse(str) 将md文件解析为一个html
     return `export default ${content}`
 }
 

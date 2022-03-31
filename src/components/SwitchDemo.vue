@@ -5,20 +5,10 @@
   </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import Switch1Demo from './Switch1Demo.vue';
 import Demo from './Demo.vue';
-
-export default {
-  components: {
-    Demo
-  },
-  setup() {
-    return {
-      Switch1Demo
-    };
-  }
-};
+console.log(Switch1Demo);
 </script>
 
 <style lang="scss" scoped>

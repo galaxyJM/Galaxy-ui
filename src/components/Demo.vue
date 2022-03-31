@@ -2,7 +2,6 @@
   <div class="demo">
     <h2>{{ component.__sourceCodeTitle }}</h2>
     <div class="demo-component">
-      <component :is="component"/>
     </div>
     <div class="demo-actions">
       <Button v-if="codeVisible" @click="hideCode" size="small" color="green">隐藏代码</Button>
@@ -19,7 +18,8 @@
 import Button from '../lib/Button.vue';
 import 'prismjs';
 import 'prismjs/themes/prism.css';
-import {computed, ref} from 'vue';
+import {computed, ref,h} from 'vue';
+import Markdown from "./Markdown.vue";
 
 
 export default {
@@ -30,6 +30,7 @@ export default {
     component: Object
   },
   setup(props) {
+    console.log(props.component.__sourceCode);
     const Prsim = (window as any).Prism;
     const html = computed(() => {
       return Prism.highlight(props.component.__sourceCode, Prism.languages.html, 'html');

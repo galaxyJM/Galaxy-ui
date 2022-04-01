@@ -2,50 +2,43 @@
   <div class="demo">
     <h2>{{ component.__sourceCodeTitle }}</h2>
     <div class="demo-component">
+      <component :is="component"/>
     </div>
     <div class="demo-actions">
-      <Button v-if="codeVisible" @click="hideCode" size="small" color="green">隐藏代码</Button>
-      <Button v-else @click="showCode" size="small" color="green">查看代码</Button>
+      <Button v-if="codeVisible" color="green" size="small" @click="hideCode">隐藏代码</Button>
+      <Button v-else color="green" size="small" @click="showCode">查看代码</Button>
     </div>
-    <div class="demo-code" v-if="codeVisible">
-      <pre class="language-html" v-html="html"/>
+    <div v-if="codeVisible" class="demo-code">
+      <highlightjs
+          :code="props.component.__sourceCode"
+          language="js"
+      />
     </div>
 
   </div>
 </template>
 
 <script lang="ts">
-import Button from '../lib/Button.vue';
-import 'prismjs';
-import 'prismjs/themes/prism.css';
-import {computed, ref,h} from 'vue';
-import Markdown from "./Markdown.vue";
-
+import 'highlight.js/lib/common';
+import hljsVuePlugin from "@highlightjs/vue-plugin";
 
 export default {
   components: {
-    Button
-  },
-  props: {
-    component: Object
-  },
-  setup(props) {
-    console.log(props.component.__sourceCode);
-    const Prsim = (window as any).Prism;
-    const html = computed(() => {
-      return Prism.highlight(props.component.__sourceCode, Prism.languages.html, 'html');
-    });
-    const showCode = () => codeVisible.value = true;
-    const hideCode = () => codeVisible.value = false;
-    const codeVisible = ref(false);
-    return {
-      html,
-      codeVisible,
-      showCode,
-      hideCode
-    };
+    highlightjs: hljsVuePlugin.component
   }
 };
+</script>
+
+<script lang="ts" setup>
+import Button from '../lib/Button.vue';
+import {ref, VueElement} from 'vue';
+
+const props = defineProps({
+  component: VueElement
+});
+const showCode = () => codeVisible.value = true;
+const hideCode = () => codeVisible.value = false;
+const codeVisible = ref(false);
 </script>
 
 <style lang="scss" scoped>

@@ -10,6 +10,7 @@
 import Switch from '../lib/Switch.vue';
 //请更换为 import {Switch} from 'galaxy-ui-j'
 import {ref} from 'vue';
+
 export default {
   name: 'Switch1Demo',
   components: {Switch},

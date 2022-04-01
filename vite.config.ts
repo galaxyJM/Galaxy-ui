@@ -9,13 +9,11 @@ const getCustomBlockAndCode = {
     name: 'getCustomBlockAndCode',
     transform(code, id) {
         //找到含有自定义块<demo>的vue文件路径
-        if (!/[0-9]Demo\.vue$/.test(id)) {
+        if (!/vue&type=demo/.test(id)) {
             return;
         }
-        console.log(typeof code);
         //读取含有自定义块<demo>的vue文件内容
-        const file = fs.readFileSync(id).toString();
-
+        const file = fs.readFileSync(id.split('?')[0]).toString();
         //获取到自定义块<demo>
         const parsed = baseParse(file).children.find((item) => {
             // @ts-ignore
@@ -26,12 +24,10 @@ const getCustomBlockAndCode = {
         let title = parsed.children[0].content.trim();
         //获取到剩余的内容
         let main = file.split(parsed.loc.source).join('').trim();
-
-        return `export default function(com){
-              console.log(com)
-          
-              
-            }`;
+        return `export default Comp => {
+                    Comp.__sourceCodeTitle = ${JSON.stringify(title)}
+                    Comp.__sourceCode = ${JSON.stringify(main)}
+               }`.trim();
     }
 };
 // __sourceCode : ${JSON.stringify(main)},

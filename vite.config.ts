@@ -1,9 +1,11 @@
-import {md} from "./plugins/md";
+import { md } from "./plugins/md";
 import vue from '@vitejs/plugin-vue';
 // @ts-ignore
 import fs from 'fs';
-import {baseParse} from '@vue/compiler-core';
-import {defineConfig} from "vite";
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
+import path from 'path'
+import { baseParse } from '@vue/compiler-core';
+import { defineConfig } from "vite";
 
 const getCustomBlockAndCode = {
     name: 'getCustomBlockAndCode',
@@ -30,8 +32,41 @@ const getCustomBlockAndCode = {
                }`.trim();
     }
 };
-// __sourceCode : ${JSON.stringify(main)},
-// __sourceCodeTitle : ${JSON.stringify(title)}
 export default defineConfig({
-    plugins: [vue(), getCustomBlockAndCode, md()]
+    plugins: [vue(), getCustomBlockAndCode, md(),createSvgIconsPlugin({
+        // 指定需要缓存的图标文件夹
+        iconDirs: [path.resolve(process.cwd(), 'src/icons')],
+        // 指定symbolId格式
+        symbolId: 'icon-[dir]-[name]',
+        customDomId: '__svg__icons__dom__'
+      }),],
+    build: {
+        lib: {
+            entry: './src/lib/index.ts',
+            name: 'galaxyUI',
+            fileName: (format) => `my-lib.${format}.js`
+        },
+        rollupOptions: {
+            external: ['vue'],
+            output: {
+
+        
+                // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
+                globals: {
+                    vue: 'Vue'
+                }
+            },
+            // plugins: [
+            //     scss({ include: /\.scss$/, sass: sass }),
+            //     esbuild({
+            //         include: /\.ts$/,
+            //         minify: process.env.NODE_ENV === 'production',
+            //         target: 'es2015'
+            //     }),
+            //     vuePlugin({
+            //         include: /\.vue$/,
+            //     })
+            // ]
+        }
+    }
 });

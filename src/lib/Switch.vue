@@ -1,22 +1,17 @@
 <template>
-  <button class="galaxy-button" :class="{selected:value}">
-    <span :class="{selected:value}" @click="toggle"></span>
+  <button class="galaxy-button" :class="{ selected: value }" @click="toggle">
+    <span :class="{ selected: value }"></span>
   </button>
 </template>
 
-<script lang="ts">
-export default {
-  name: "Switch",
-  props:{
-    value: Boolean
-  },
-  setup(props,context){
-    const toggle = ()=>{
-      context.emit('update:value',!props.value)
-    }
-    return {toggle}
-  }
-};
+<script lang="ts" setup>
+const props = defineProps({
+  value: Boolean
+})
+const emits = defineEmits(['update:value'])
+const toggle = () => {
+  emits('update:value', !props.value)
+}
 </script>
 
 <style lang="scss">
@@ -25,11 +20,13 @@ export default {
   height: 50px;
   border-radius: 50px;
   border: 0;
-  background: rgb(191,191,191);
+  background: rgb(191, 191, 191);
   margin-left: 10px;
-  &.selected{
-    background: rgb(57,143,253);
+
+  &.selected {
+    background: rgb(57, 143, 253);
   }
+
   span {
     display: block;
     width: 45px;

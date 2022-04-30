@@ -1,14 +1,12 @@
 <template>
-  <div class="galaxy-carousel">
+  <div class="galaxy-carousel" @mouseover="showup" @mouseout="removeButton">
     <div class="galaxy-carousel-content">
-
       <slot></slot>
-
     </div>
-    <button class="left-arrow" @click="toLeft">
+    <button class="left-arrow" v-show="hover" @click="toLeft">
       <Icon id="leftArrow" />
     </button>
-    <button class="right-arrow" @click="toRight">
+    <button class="right-arrow" v-show="hover" @click="toRight">
       <Icon id="rightArrow" />
     </button>
     <ul class="galaxy-bottom">
@@ -29,10 +27,11 @@ const props = defineProps({
 })
 let items = ref([])
 let activeIndex = ref(1)
+let hover = ref(false)
 // 通过provide和inject进行父子组件之间的相互通信
 provide('content', { items, activeIndex })
 function toLeft() {
-  if (activeIndex.value -1 < 0) {
+  if (activeIndex.value - 1 < 0) {
     return
   }
   activeIndex.value--
@@ -50,14 +49,14 @@ function toRight() {
     item.moveItem(index, activeIndex)
   })
 }
-onMounted(() => {
-  
-})
+function showup() { 
+  hover.value = true
 
+}
+function removeButton(e) {
+  hover.value = false
 
-
-
-
+}
 </script>
 
 <style lang="scss">
@@ -68,15 +67,25 @@ onMounted(() => {
   button {
     position: absolute;
     z-index: 999;
+    border: none;
+    background-color: gainsboro;
+    border-radius: 50%;
+    transition: all 2s;
+
+    .icon {
+      font-size: 30px;
+    }
 
     &.left-arrow {
       top: 50%;
-      left: 0;
+      left: 10px;
+      transform: translateY(-50%);
     }
 
     &.right-arrow {
       top: 50%;
-      right: 0;
+      right: 10px;
+      transform: translateY(-50%);
     }
   }
 }
@@ -88,8 +97,9 @@ onMounted(() => {
 .galaxy-bottom {
   position: absolute;
   display: flex;
-  bottom: 0;
-  left: 0;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
 
   li {
     width: 20px;

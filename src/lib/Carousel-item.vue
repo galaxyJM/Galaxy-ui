@@ -1,5 +1,5 @@
 <template>
-    <div class="galaxy-carousel-item" :style="trans">
+    <div :class="{ animation: animationControl }" class="galaxy-carousel-item" :style="trans">
         <slot />
     </div>
 </template>
@@ -9,10 +9,18 @@ import { getCurrentInstance, inject, onMounted, ref, unref } from 'vue';
 const parentContext = inject('content')
 let items = parentContext.items  //表示
 let activeIndex = parentContext.activeIndex
+let animationControl = ref(true)
 let index = ref(0)
 let trans = ref('transform: translateX(10px)')
 let instance = getCurrentInstance()
-function moveItem(index, activeIndex) {
+function moveItem(index, activeIndex,direction) {
+    if ((direction === 'left' && (unref(index) - unref(activeIndex)) === -1) 
+    || (direction === 'right' && (unref(index) - unref(activeIndex)) === 2)) {
+        animationControl.value = !animationControl.value
+        setTimeout(() => {
+            animationControl.value = !animationControl.value
+        })
+    }
     trans.value = `transform: translateX(${unref(index) - unref(activeIndex)}00%)`
 }
 onMounted(() => {
@@ -31,6 +39,11 @@ onMounted(() => {
     left: 0;
     width: 100%;
     height: 100%;
-    transition: transform 1s;
+
+    &.animation {
+        transition: transform 500ms;
+    }
+
+
 }
 </style>

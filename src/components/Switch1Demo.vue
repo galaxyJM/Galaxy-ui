@@ -3,20 +3,11 @@
 </demo>
 
 <template>
-  <Switch :value="selected" @update:value="selected = $event"/>
+  <Switch :value="selected" @update:value="selected = $event" />
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import Switch from '../lib/Switch.vue';
-//请更换为 import {Switch} from 'galaxy-ui-j'
-import {ref} from 'vue';
-
-export default {
-  name: 'Switch1Demo',
-  components: {Switch},
-  setup() {
-    const selected = ref(false);
-    return {selected};
-  }
-};
+import { ref } from 'vue';
+const selected = ref(false);
 </script>

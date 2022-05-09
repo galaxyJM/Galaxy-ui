@@ -15,14 +15,11 @@ import CarouselItem from "../lib/Carousel-item.vue";
 </script>
 <style lang="scss">
 .galaxy-carousel-item h3 {
-  color: rgb(244, 238, 238);
+  color: grey;
   font-size: 100px;
   opacity: 0.75;
   line-height: 300px;
   margin: 0;
   text-align: center;
-}
-.galaxy-carousel-item{
-    background-color: grey;
 }
 </style>

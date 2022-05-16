@@ -10,34 +10,22 @@
       <Icon id="rightArrow" />
     </button>
     <ul class="galaxy-bottom">
-      <li v-for="item in items.length" :class="{ active: item - 1 === activeControl }">
+      <li v-for="item in items.length" :class="{ active: item - 1 === activeIndex }" @click="jumpToNext(item - 1)">
       </li>
-
     </ul>
-
   </div>
-
 </template>
 
 <script lang="ts" setup>
-import { computed, onMounted, onUnmounted, onUpdated, provide, ref, unref } from 'vue';
+import { computed, onMounted, provide, ref } from 'vue';
 import Icon from '../components/Icon.vue';
 const props = defineProps({
   trigger: String,
   autoplay: Boolean
 })
 let items = ref([])
-let activeIndex = ref(1)
+let activeIndex = ref(0)
 let hover = ref(false)
-let initPosition = []
-let activeControl = computed(() => {
-  if (initPosition.length) {
-    return initPosition.findIndex((item) => {
-      return item.uid === items.value[activeIndex.value].uid
-    })
-
-  }
-})
 // 通过provide和inject进行父子组件之间的相互通信
 provide('content', { items, activeIndex })
 function throttle(fn, delay) {
@@ -52,19 +40,50 @@ function throttle(fn, delay) {
     }, delay)
   }
 }
-let throttledToLeft = throttle(toLeft, 350)
-let throttledToRight = throttle(toRight, 350)
+function jumpToNext(target) {
+  let oldActiveIndex = activeIndex.value
+  let time = Math.abs(target - oldActiveIndex)
+  if (target > oldActiveIndex) {
+    let index = 0
+    while (index < time) {
+      setTimeout(() => {
+        toRight()
+      }, index * 150)
+      index++
+    }
+  } else if (target < oldActiveIndex) {
+    let index = 0
+    while (index < time) {
+      setTimeout(() => {
+        toLeft()
+      }, index * 150)
+      index++
+    }
+  }
+}
+let throttledToLeft = throttle(toLeft, 300)
+let throttledToRight = throttle(toRight, 300)
 function toLeft() {
-  items.value.unshift(items.value.pop())
+  let oldActiveIndex = activeIndex.value
+  activeIndex.value--
+  if (activeIndex.value === -1) {
+    activeIndex.value = items.value.length - 1
+  }
   items.value.map((item, index) => {
-    item.moveItem(index, activeIndex, 'left')
+    item.moveItem(index, activeIndex, oldActiveIndex)
   })
+
 }
 function toRight() {
-  items.value.push(items.value.shift())
+  let oldActiveIndex = activeIndex.value
+  activeIndex.value++
   items.value.map((item, index) => {
-    item.moveItem(index, activeIndex, 'right')
+    item.moveItem(index, activeIndex, oldActiveIndex)
   })
+  if (activeIndex.value >= items.value.length) {
+    activeIndex.value = 0
+  }
+
 }
 function showup() {
   hover.value = true
@@ -74,8 +93,11 @@ function removeButton() {
   hover.value = false
 
 }
+
 onMounted(() => {
-  initPosition = [...items.value]
+  items.value.forEach((item, index) => {
+    item.initPos(index, activeIndex.value)
+  })
 })
 </script>
 
@@ -90,7 +112,7 @@ onMounted(() => {
     border: none;
     background-color: gainsboro;
     border-radius: 50%;
-    transition: all 500ms;
+    transition: all 200ms ease;
 
     .icon {
       font-size: 30px;
@@ -131,11 +153,11 @@ onMounted(() => {
 
 
     &:hover {
-      background-color: white;
+      background-color: grey;
     }
 
     &.active {
-      background-color: white;
+      background-color: grey;
       transition: all 500ms;
     }
   }

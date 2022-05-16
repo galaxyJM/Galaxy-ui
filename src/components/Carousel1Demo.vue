@@ -15,11 +15,18 @@ import CarouselItem from "../lib/Carousel-item.vue";
 </script>
 <style lang="scss">
 .galaxy-carousel-item h3 {
-  color: grey;
+  color: black;
   font-size: 100px;
   opacity: 0.75;
   line-height: 300px;
   margin: 0;
   text-align: center;
+}
+.galaxy-carousel-item:nth-child(2n) {
+  background-color: #99a9bf;
+}
+
+.galaxy-carousel-item:nth-child(2n + 1) {
+  background-color: #d3dce6;
 }
 </style>

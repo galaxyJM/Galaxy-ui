@@ -6,29 +6,53 @@
 
 <script lang="ts" setup>
 import { getCurrentInstance, inject, onMounted, ref, unref } from 'vue';
-const parentContext = inject('content')
-let items = parentContext.items  //表示
-let activeIndex = parentContext.activeIndex
+const parentContext = inject<any>('content')
+let items = parentContext.items
 let animationControl = ref(true)
 let index = ref(0)
 let trans = ref('transform: translateX(10px)')
 let instance = getCurrentInstance()
-function moveItem(index, activeIndex,direction) {
-    if ((direction === 'left' && (unref(index) - unref(activeIndex)) === -1) 
-    || (direction === 'right' && (unref(index) - unref(activeIndex)) === 2)) {
+
+function clearAnimation() {
+    animationControl.value = !animationControl.value
+    setTimeout(() => {
         animationControl.value = !animationControl.value
-        setTimeout(() => {
-            animationControl.value = !animationControl.value
-        })
+    },100)
+}
+function moveItem(index, activeIndex, oldActiveIndex) {
+    let distance = getDistance(index, activeIndex)
+    let oldDistance = getDistance(index, oldActiveIndex)
+    if (Math.abs(distance) + Math.abs(oldDistance) >= items.value.length - 1) {
+        clearAnimation()
     }
-    trans.value = `transform: translateX(${unref(index) - unref(activeIndex)}00%)`
+    if (distance !== undefined) {
+        trans.value = `transform: translateX(${distance}00%)`
+    }
+}
+function getDistance(index, activeIndex) {
+    let middle = Math.floor(items.value.length / 2)
+    let distance = unref(index) - unref(activeIndex)
+    if (Math.abs(distance) > middle) {
+        return distance > 0 ? -(items.value.length % Math.abs(distance)) : items.value.length % Math.abs(distance)
+    } else if (Math.abs(distance) === middle) {
+        return distance > 0 ? -distance : distance
+    } else {
+        return distance
+    }
+}
+function initPos(index, activeIndex) {
+    let distance = getDistance(index, activeIndex)
+    if (distance !== undefined) {
+        trans.value = `transform: translateX(${distance}00%)`
+    }
 }
 onMounted(() => {
-    items.value.push({ instance, moveItem, uid: instance.uid })
+    items.value.push({
+        instance, moveItem, uid: instance.uid, initPos
+    })
     index.value = items.value.findIndex((item) => {
         return item.uid === instance.uid
     })
-    trans.value = `transform: translateX(${unref(index) - unref(activeIndex)}00%)`
 })
 </script>
 

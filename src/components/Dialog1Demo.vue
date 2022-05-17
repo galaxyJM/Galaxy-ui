@@ -2,10 +2,6 @@
 点一下试试看？
 </demo>
 
-<template>
-  <Button @click="openD" size="small">点击打开提示框</Button>
-</template>
-
 <script lang="ts" setup>
 import Button from "../lib/Button.vue";
 import { openDialog } from "../lib";
@@ -25,3 +21,8 @@ const openD = () => {
   });
 };
 </script>
+
+<template>
+  <Button @click="openD" size="small">点击打开提示框</Button>
+</template>
+

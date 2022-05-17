@@ -9,7 +9,7 @@
       <Button v-else theme="likeObject" size="small" @click="showCode">查看代码</Button>
     </div>
     <div v-if="codeVisible" class="demo-code">
-      <highlightjs :code="props.component.__sourceCode" language="js" />
+      <highlightjs :code="component.__sourceCode" autodetect />
     </div>
 
   </div>
@@ -23,14 +23,13 @@ export default {
   components: {
     highlightjs: hljsVuePlugin.component
   }
-};
+}
 </script>
 
 <script lang="ts" setup>
 import Button from '../lib/Button.vue';
 import { ref } from 'vue';
-
-const props = defineProps({
+let props = defineProps({
   component: Object
 });
 const showCode = () => codeVisible.value = true;

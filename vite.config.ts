@@ -33,40 +33,26 @@ const getCustomBlockAndCode = {
     }
 };
 export default defineConfig({
-    plugins: [vue(), getCustomBlockAndCode, md(),createSvgIconsPlugin({
+    plugins: [vue(), getCustomBlockAndCode, md(), createSvgIconsPlugin({
         // 指定需要缓存的图标文件夹
         iconDirs: [path.resolve(process.cwd(), 'src/icons')],
         // 指定symbolId格式
         symbolId: 'icon-[dir]-[name]',
         customDomId: '__svg__icons__dom__'
-      }),],
-    build: {
-        lib: {
-            entry: './src/lib/index.ts',
-            name: 'galaxyUI',
-            fileName: (format) => `my-lib.${format}.js`
-        },
-        rollupOptions: {
-            external: ['vue'],
-            output: {
-
-        
-                // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
-                globals: {
-                    vue: 'Vue'
-                }
-            },
-            // plugins: [
-            //     scss({ include: /\.scss$/, sass: sass }),
-            //     esbuild({
-            //         include: /\.ts$/,
-            //         minify: process.env.NODE_ENV === 'production',
-            //         target: 'es2015'
-            //     }),
-            //     vuePlugin({
-            //         include: /\.vue$/,
-            //     })
-            // ]
-        }
-    }
+    })]
+    // build: {
+    //     lib: {
+    //         entry: './src/lib/index.ts',
+    //         name: 'galaxyUI',
+    //         fileName: (format) => `my-lib.${format}.js`
+    //     },
+    //     rollupOptions: {
+    //         external: ['vue'],
+    //         output: {
+    //             globals: {
+    //                 vue: 'Vue'
+    //             }
+    //         }
+    //     }
+    // }
 });

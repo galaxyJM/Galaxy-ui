@@ -5,7 +5,7 @@
            :class="{selected: title === selected}"
            v-for="(title,index) in titles" @click="select(title)"
            :key="index"
-           :ref="el => { if (title === selected) {this.selectedItem = el }}"
+           :ref="el => { if (title === selected) {selectedItem = el }}"
       >{{ title }}
       </div>
       <div class="galaxy-Tabs-title-indicator" ref="indicator"></div>
@@ -45,6 +45,7 @@ export default {
       //就在onMounted之后执行watchEffect
     });
     const defaults = context.slots.default();
+    console.log(defaults)
     const select = (title) => {
       context.emit('update:selected', title);
     };
@@ -55,7 +56,7 @@ export default {
     });
     const titles = defaults.map((tab) => {
       return tab.props.title;
-    });
+    });  
     const currentTab = computed(() => {
       return defaults.find(tab => tab.props.title === props.selected);
     });

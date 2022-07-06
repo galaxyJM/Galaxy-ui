@@ -46,7 +46,9 @@ function initPos(index, activeIndex) {
         trans.value = `transform: translateX(${distance}00%)`
     }
 }
+console.log(3)
 onMounted(() => {
+    console.log(4)
     items.value.push({
         instance, moveItem, uid: instance.uid, initPos
     })

@@ -93,8 +93,9 @@ function removeButton() {
   hover.value = false
 
 }
-
+console.log(1)
 onMounted(() => {
+  console.log(2)
   items.value.forEach((item, index) => {
     item.initPos(index, activeIndex.value)
   })

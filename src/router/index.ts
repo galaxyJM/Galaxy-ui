@@ -7,6 +7,7 @@ import DialogDemo from "../components/DialogDemo.vue";
 import TabsDemo from "../components/TabsDemo.vue";
 import CarouselDemo from "../components/CarouselDemo.vue";
 import Markdown from "../components/Markdown.vue";
+import JsonViewDemo from "../components/JsonViewDemo.vue";
 import {h} from "vue";
 // @ts-ignore
 import description from "../markdown/description.md";
@@ -37,7 +38,8 @@ const router = createRouter({
                 {path: 'button', component: ButtonDemo},
                 {path: 'dialog', component: DialogDemo},
                 {path: 'tabs', component: TabsDemo},
-                {path: 'carousel', component: CarouselDemo}
+                {path: 'carousel', component: CarouselDemo},
+                {path: 'jsonview', component: JsonViewDemo}
             ]
         }
     ]

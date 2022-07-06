@@ -3,7 +3,7 @@
     <Topnav menuVisible class="Top-nav"/>
     <div class="content">
       <aside v-if="asideVisible" class="aside">
-        <h2>文档</h2>
+        <h2>开始使用</h2>
         <ol>
           <li>
             <router-link to="/doc/description">介绍</router-link>
@@ -32,6 +32,9 @@
           <li>
             <router-link to="/doc/carousel">走马灯组件</router-link>
           </li>
+          <li>
+            <router-link to="/doc/jsonview">JSON展示组件</router-link>
+          </li>
         </ol>
       </aside>
       <main>
@@ -55,7 +58,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .topBox {
   display: flex;
   flex-direction: column;
@@ -77,7 +80,6 @@ export default {
 
   .content {
     flex-grow: 1;
-    padding-left: 150px;
     @media (max-width: 500px) {
       padding-left: 0;
     }
@@ -93,7 +95,7 @@ export default {
 
   main {
     flex-grow: 1;
-    padding-top: 100px;
+    padding-top: 70px;
     padding-left: 20px;
     @media (max-width: 500px) {
       padding: 50px 0 0 0;
@@ -104,21 +106,21 @@ export default {
 
 aside {
   background: #ffffff;
-  width: 150px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  padding: 70px 16px 16px;
+  width: 200px;
+  padding: 70px 10px 10px;
   height: 100%;
   z-index: 9;
+  text-align: center;
+
 
   h2 {
-    margin-bottom: 4px;
+    margin-top: 20px;
   }
 
   ol {
     li {
       padding: 4px 0;
+      margin-top: 5px;
     }
   }
 

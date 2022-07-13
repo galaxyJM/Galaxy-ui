@@ -7,7 +7,7 @@
       <router-link to="/" class="logo">
         <Icon class="icon-galaxy" id="galaxy" />
       </router-link>
-      <div class="menu">
+      <div class="menu" v-if="asideVisible">
         <router-link to="/doc/description">开始使用</router-link>
       </div>
     </nav>

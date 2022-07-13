@@ -29,7 +29,7 @@ export default {
 <script lang="ts" setup>
 import Button from '../lib/Button.vue';
 import { ref } from 'vue';
-let props = defineProps({
+defineProps({
   component: Object
 });
 const showCode = () => codeVisible.value = true;

@@ -1,6 +1,6 @@
 <template>
   <div class="topBox">
-    <Topnav menuVisible class="Top-nav"/>
+    <Topnav :menuVisible="menuVisible" class="Top-nav" />
     <div class="content">
       <aside v-if="asideVisible" class="aside">
         <h2>开始使用</h2>
@@ -38,24 +38,20 @@
         </ol>
       </aside>
       <main>
-        <router-view/>
+        <router-view />
       </main>
     </div>
   </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import Topnav from "../components/Topnav.vue";
-import {inject, Ref} from "vue";
-
-export default {
-  name: "Doc",
-  components: {Topnav},
-  setup() {
-    const asideVisible = inject<Ref<boolean>>('asideVisible');
-    return {asideVisible};
-  }
-};
+import { inject, ref, Ref } from "vue";
+let menuVisible = ref(false)
+const asideVisible = inject<Ref<boolean>>('asideVisible');
+if (asideVisible?.value === false) {
+  menuVisible.value = true
+}
 </script>
 
 <style lang="scss">
@@ -68,11 +64,6 @@ export default {
     color: #42b983;
   }
 
-  a:hover {
-    border-bottom: 3px solid #42b983;
-
-  }
-
   .Top-nav {
     flex-shrink: 0;
     z-index: 10;
@@ -80,6 +71,7 @@ export default {
 
   .content {
     flex-grow: 1;
+
     @media (max-width: 500px) {
       padding-left: 0;
     }
@@ -97,9 +89,11 @@ export default {
     flex-grow: 1;
     padding-top: 70px;
     padding-left: 20px;
+
     @media (max-width: 500px) {
       padding: 50px 0 0 0;
     }
+
     background: white;
   }
 }
@@ -136,5 +130,4 @@ aside {
 main {
   overflow: auto;
 }
-
 </style>
